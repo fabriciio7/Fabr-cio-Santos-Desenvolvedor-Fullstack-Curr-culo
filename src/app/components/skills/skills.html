@@ -1,0 +1,57 @@
+<section id="skills" class="skills-section">
+  <!-- Cabeçalho da Seção -->
+  <div class="skills-section__header">
+    <span class="skills-section__eyebrow">STACK TÉCNICA</span>
+    <h2 class="skills-section__title">Habilidades & Tecnologias</h2>
+    <p class="skills-section__subtitle">
+      Filtragem dinâmica por categoria com o novo controle de fluxo e Signals reativos do Angular 22.
+    </p>
+  </div>
+
+  <!-- Pílulas de Filtro Reativo -->
+  <div class="skills-section__filters">
+    @for (cat of categorias; track cat) {
+      <button 
+        type="button"
+        class="filter-pill"
+        [class.filter-pill--active]="filtroAtivo() === cat"
+        (click)="setFiltro(cat)">
+        {{ cat }}
+      </button>
+    }
+  </div>
+
+  <!-- Grade de Cartões de Habilidades (Bento Grid) -->
+  <div class="skills-section__grid">
+    @for (skill of skillsFiltradas(); track skill.nome) {
+      <div class="skill-card">
+        <div class="skill-card__main">
+          <!-- Ícone (SVG ou Emoji) -->
+          <div class="skill-card__icon-box">
+            @if (skill.icone.startsWith('http')) {
+              <img [src]="skill.icone" [alt]="'Ícone de ' + skill.nome" class="skill-card__icon" />
+            } @else {
+              <span class="skill-card__emoji">{{ skill.icone }}</span>
+            }
+          </div>
+
+          <!-- Nomes -->
+          <div class="skill-card__texts">
+            <h3 class="skill-card__name">{{ skill.nome }}</h3>
+            <span class="skill-card__category">{{ skill.categoria }}</span>
+          </div>
+        </div>
+
+        <!-- Badge de Nível (PRATICANDO / ESTUDANDO / EM USO) -->
+        <span 
+          class="skill-card__status"
+          [class.skill-card__status--studying]="skill.status === 'ESTUDANDO'"
+          [class.skill-card__status--in-use]="skill.status === 'EM USO'">
+          {{ skill.status }}
+        </span>
+      </div>
+    } @empty {
+      <p class="skills-section__empty">Nenhuma habilidade encontrada nesta categoria.</p>
+    }
+  </div>
+</section>

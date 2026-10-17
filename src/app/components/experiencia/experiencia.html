@@ -1,0 +1,43 @@
+<section id="experiencia" class="exp-section">
+  <!-- Cabeçalho da Seção -->
+  <div class="exp-section__header">
+    <span class="exp-section__eyebrow">TRAJETÓRIA & FORMAÇÃO</span>
+    <h2 class="exp-section__title">Experiência & Educação</h2>
+    <p class="exp-section__subtitle">
+      Minha jornada prática de aprendizado contínuo, evolução e construção de software.
+    </p>
+  </div>
+
+  <!-- Cartões Bento de Experiência -->
+  <div class="exp-section__list">
+    @for (item of experiencias(); track item.id) {
+      <article class="exp-card">
+        <!-- Topo do Card: Categoria + Período -->
+        <div class="exp-card__top">
+          <span 
+            class="exp-card__badge"
+            [class.exp-card__badge--formacao]="item.categoria.includes('Superior')"
+            [class.exp-card__badge--estudos]="!item.categoria.includes('Superior')">
+            {{ item.categoria }}
+          </span>
+
+          <span class="exp-card__periodo">{{ item.periodo }}</span>
+        </div>
+
+        <!-- Conteúdo Principal -->
+        <h3 class="exp-card__title">{{ item.titulo }}</h3>
+        @if (item.subtitulo) {
+          <h4 class="exp-card__subtitle">{{ item.subtitulo }}</h4>
+        }
+        <p class="exp-card__desc">{{ item.descricao }}</p>
+
+        <!-- Tags de Tecnologias -->
+        <div class="exp-card__tags">
+          @for (tag of item.tags; track tag) {
+            <span class="exp-card__tag">{{ tag }}</span>
+          }
+        </div>
+      </article>
+    }
+  </div>
+</section>

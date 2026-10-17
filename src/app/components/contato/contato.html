@@ -1,0 +1,86 @@
+<footer id="contato" class="contact-section">
+  <!-- Cabeçalho da Seção -->
+  <div class="contact-section__header">
+    <span class="contact-section__eyebrow">VAMOS CONVERSAR?</span>
+    <h2 class="contact-section__title">Contato & Redes</h2>
+    <p class="contact-section__subtitle">
+      Estou disponível para oportunidades de estágio, vagas como Desenvolvedor Júnior e conexões no ecossistema de tecnologia.
+    </p>
+  </div>
+
+  <!-- Cartão Principal de Contato (Bento Card) -->
+  <div class="contact-card">
+    <!-- Bloco de E-mail com Cópia Interativa -->
+    <div class="contact-card__email-box">
+      <div class="contact-card__email-info">
+        <span class="contact-card__email-label">E-MAIL PRINCIPAL</span>
+        <a [href]="'mailto:' + email" class="contact-card__email-link">
+          {{ email }}
+        </a>
+      </div>
+
+      <button 
+        type="button" 
+        class="copy-btn" 
+        (click)="copiarEmail()"
+        [class.copy-btn--success]="copiado()"
+        aria-label="Copiar endereço de e-mail">
+        @if (copiado()) {
+          <span class="copy-btn__text">✓ Copiado!</span>
+        } @else {
+          <span class="copy-btn__text">📋 Copiar E-mail</span>
+        }
+      </button>
+    </div>
+
+    <!-- Grade de Links Sociais -->
+    <div class="contact-card__links">
+      <!-- LinkedIn -->
+      <a 
+        [href]="linkedin" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="social-link social-link--linkedin">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" class="social-link__icon" />
+        <div class="social-link__content">
+          <span class="social-link__name">LinkedIn</span>
+          <span class="social-link__handle">/in/fabríciosantos07</span>
+        </div>
+        <span class="social-link__arrow">↗</span>
+      </a>
+
+      <!-- GitHub -->
+      <a 
+        [href]="github" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="social-link social-link--github">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="social-link__icon" />
+        <div class="social-link__content">
+          <span class="social-link__name">GitHub</span>
+          <span class="social-link__handle">@fabriciio7</span>
+        </div>
+        <span class="social-link__arrow">↗</span>
+      </a>
+
+      <!-- WhatsApp -->
+      <a 
+        [href]="whatsapp" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="social-link social-link--whatsapp">
+        <span class="social-link__emoji">💬</span>
+        <div class="social-link__content">
+          <span class="social-link__name">WhatsApp</span>
+          <span class="social-link__handle">(85) 99699-1341</span>
+        </div>
+        <span class="social-link__arrow">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Rodapé Final -->
+  <div class="contact-section__footer">
+    <p>© 2026 Fabrício Santos • Desenvolvido com Angular 22, Signals & SCSS</p>
+  </div>
+</footer>

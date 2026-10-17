@@ -1,0 +1,53 @@
+<!-- Barra Superior: Botão de Tema no Topo Direito -->
+<header class="top-bar">
+  <button 
+    type="button" 
+    class="theme-pill" 
+    (click)="alternarTema()"
+    [attr.aria-label]="'Alternar para modo ' + (tema() === 'dark' ? 'claro' : 'escuro')">
+    @if (tema() === 'dark') {
+      <span class="theme-pill__content">☀️ Modo Claro</span>
+    } @else {
+      <span class="theme-pill__content">🌙 Modo Escuro</span>
+    }
+  </button>
+</header>
+
+<!-- Seção Hero Principal -->
+<section class="hero-section">
+  <!-- Avatar Circular com Halo Glow -->
+  <div class="hero-section__avatar-wrapper">
+    <div class="hero-section__avatar-ring">
+      <img 
+        class="hero-section__avatar" 
+        [src]="fotoUrl()" 
+        [alt]="'Foto de perfil de ' + nome()" />
+    </div>
+  </div>
+
+  <!-- Detalhes do Perfil -->
+  <div class="hero-section__details">
+    <!-- Badges Superiores -->
+    <div class="hero-section__badges">
+      <span class="badge badge--role">{{ papel() }}</span>
+      <span class="badge badge--status">
+        <span class="badge__status-dot"></span>
+        {{ status() }}
+      </span>
+    </div>
+
+    <!-- Nome e Bio -->
+    <h1 class="hero-section__name">{{ nome() }}</h1>
+    <p class="hero-section__bio">{{ bio() }}</p>
+
+    <!-- Botões em Pílula -->
+    <div class="hero-section__actions">
+      <a href="#experiencia" class="pill-btn pill-btn--primary">
+        Ver Trajetória
+      </a>
+      <a href="#contato" class="pill-btn pill-btn--secondary">
+        Entrar em Contato
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,201 @@
+@use '../../../styles/mixins' as *;
+
+:host {
+  display: block;
+  margin-bottom: var(--space-2xl);
+}
+
+.contact-section {
+  &__header {
+    margin-bottom: var(--space-xl);
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-xs);
+  }
+
+  &__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: var(--space-sm);
+  }
+
+  &__subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    max-width: 650px;
+    line-height: 1.5;
+  }
+
+  &__footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-lg);
+  }
+}
+
+// Cartão Bento de Contato
+.contact-card {
+  @include glass(14px, 0.75);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  box-shadow: var(--shadow-card);
+
+  // Bloco de E-mail
+  &__email-box {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--border-color);
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__email-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__email-label {
+    font-size: 0.72rem;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  &__email-link {
+    font-family: var(--font-heading);
+    font-size: clamp(1.05rem, 3.2vw, 1.45rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+    word-break: break-all;
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+
+  // Grade de Links Sociais
+  &__links {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+// Botão Copiar E-mail
+.copy-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  align-self: flex-start;
+
+  @include tablet {
+    align-self: center;
+  }
+
+  &:hover {
+    background: rgba(56, 189, 248, 0.15);
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  &--success {
+    background: #10b981 !important;
+    color: #030712 !important;
+    border-color: #10b981 !important;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+    transform: scale(1.02);
+  }
+}
+
+// Cartãozinho Individual de Rede Social
+.social-link {
+  @include glass(8px, 0.4);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  text-decoration: none;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: 0 6px 20px var(--accent-glow);
+
+    .social-link__arrow {
+      transform: translate(2px, -2px);
+      color: var(--accent);
+    }
+  }
+
+  &__icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  &__emoji {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  &__handle {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  &__arrow {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    transition: transform var(--transition-fast), color var(--transition-fast);
+  }
+}

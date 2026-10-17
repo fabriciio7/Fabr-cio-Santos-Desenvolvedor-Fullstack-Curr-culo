@@ -1,0 +1,149 @@
+@use '../../../styles/mixins' as *;
+
+:host {
+  display: block;
+  margin-bottom: var(--space-3xl);
+}
+
+.exp-section {
+  &__header {
+    margin-bottom: var(--space-xl);
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    color: var(--accent-light);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-xs);
+  }
+
+  &__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: var(--space-sm);
+  }
+
+  &__subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    max-width: 650px;
+    line-height: 1.5;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+}
+
+// Cartão Individual da Trajetória (Bento Card)
+.exp-card {
+  @include glass(14px, 0.75);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 30px var(--accent-glow);
+  }
+
+  // Topo do Card
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-md);
+  }
+
+  &__badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    border: 1px solid var(--border-color);
+
+    &--formacao {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border-color: rgba(56, 189, 248, 0.35);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+    }
+
+    &--projeto {
+      background: rgba(16, 185, 129, 0.12);
+      color: #10b981;
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    &--estudos {
+      background: rgba(245, 158, 11, 0.12);
+      color: #f59e0b;
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+  }
+
+  &__periodo {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-family: var(--font-heading);
+  }
+
+  // Textos
+  &__title {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin-bottom: 0.25rem;
+  }
+
+  &__subtitle {
+    font-size: 0.95rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+  }
+
+  &__desc {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+  }
+
+  // Tags no rodapé do card
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  &__tag {
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.22);
+    color: #e2e8f0;
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: all var(--transition-fast);
+
+    &:hover {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: #38bdf8;
+      color: #38bdf8;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+.app-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+// ─── MICROANIMAÇÃO DE ENTRADA ESCALONADA (STAGGERED FADE-IN) ───────────────
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+app-hero,
+app-skills,
+app-experiencia,
+app-contato {
+  display: block;
+  animation: fadeInUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+// Delays escalonados para efeito cascata fluido
+app-hero        { animation-delay: 0.05s; }
+app-skills      { animation-delay: 0.20s; }
+app-experiencia { animation-delay: 0.35s; }
+app-contato     { animation-delay: 0.50s; }
+
+// Acessibilidade: respeita preferências de usuários sensíveis a movimento
+@media (prefers-reduced-motion: reduce) {
+  app-hero,
+  app-skills,
+  app-experiencia,
+  app-contato {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

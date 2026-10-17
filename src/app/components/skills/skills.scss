@@ -1,0 +1,178 @@
+@use '../../../styles/mixins' as *;
+
+:host {
+  display: block;
+  margin-bottom: var(--space-3xl);
+}
+
+.skills-section {
+  // Cabeçalho
+  &__header {
+    margin-bottom: var(--space-xl);
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    color: var(--accent-light);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-xs);
+  }
+
+  &__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: var(--space-sm);
+  }
+
+  &__subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    max-width: 650px;
+    line-height: 1.5;
+  }
+
+  // Barra de Filtros
+  &__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-2xl);
+  }
+
+  // Grade de Cards
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--text-muted);
+    padding: var(--space-2xl);
+  }
+}
+
+// Botões de Filtro (Pills)
+.filter-pill {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.45rem 1.2rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+  }
+
+  &--active {
+    background: var(--accent);
+    color: var(--accent-contrast, #ffffff);
+    border-color: var(--accent);
+    box-shadow: 0 0 16px var(--accent-glow);
+    font-weight: 700;
+  }
+}
+
+// Cartão Individual de Skill
+.skill-card {
+  @include glass(12px, 0.7);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 24px var(--accent-glow);
+  }
+
+  &__main {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  &__icon-box {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+  }
+
+  &__emoji {
+    font-size: 1.8rem;
+  }
+
+  &__name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+
+  &__category {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  // Badge de Status
+  &__status {
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-full);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.15);
+
+    &--studying {
+      background: rgba(148, 163, 184, 0.1);
+      color: var(--text-secondary);
+      border-color: rgba(148, 163, 184, 0.2);
+    }
+
+    &--in-use {
+      background: rgba(16, 185, 129, 0.12);
+      color: #10b981;
+      border-color: rgba(16, 185, 129, 0.3);
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+    }
+  }
+}
